@@ -10,17 +10,17 @@ import AuthContext from "./store/auth-context";
 
 function App() {
   const authctx = useContext(AuthContext);
-  const isLoaggedIn = authctx.isLoggedIn;
+  const isLoggedIn = authctx.isLoggedIn;
   return (
     <Layout>
       <Routes>
         <Route path="/" end element={<HomePage />} />
-        {!isLoaggedIn && <Route path="/auth" element={<AuthPage />} />}
+        {!isLoggedIn && <Route path="/auth" element={<AuthPage />} />}
         <Route
           path="/profile"
           element={
-            (isLoaggedIn && <UserProfile />) ||
-            (!isLoaggedIn && <Navigate to="/auth" replace />)
+            (isLoggedIn && <UserProfile />) ||
+            (!isLoggedIn && <Navigate to="/auth" replace />)
           }
         />
         <Route path="*" element={<HomePage />} />
